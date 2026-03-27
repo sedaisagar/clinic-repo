@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # INSTALLED APPS
+    'users',
+    
+    # THIRD PARTY APPS
+
 ]
 
 MIDDLEWARE = [
@@ -131,3 +137,11 @@ STATIC_ROOT = BASE_DIR /  "staticfiles"
 # MEDIA PATH | ROOT
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+
+
+# 
+
+AUTH_USER_MODEL = "users.User"
+
+LOGIN_URL = "admin-login-page"
