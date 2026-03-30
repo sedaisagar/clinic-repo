@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 from mainapp.utils import CommonModel
 
@@ -33,6 +34,14 @@ class Testimonials(CommonModel):
     class Meta:
         db_table = "testimonials"
     
+
+    # @property
+    # def get_edit_url(self):
+    #     return reverse_lazy("admin-testimonials-update-page", self.pk)    
+    
+    # @property
+    # def get_delete_url(self):
+    #     return reverse_lazy("admin-testimonials-delete-page", self.pk)
 
 class TrustedPartners(CommonModel):
     name =  models.CharField(max_length=50)

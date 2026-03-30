@@ -2,6 +2,9 @@ from django.urls import path
 
 from admin_panel.views.banners import BannerView
 from admin_panel.views.common_views import AdminHomeView,AdminLoginView,AdminLogoutView
+from admin_panel.views.testimonials import TestimonialCreateView, TestimonialDeleteView, TestimonialListView, TestimonialUpdateView
+from admin_panel.views.trusted_partners import TrustedPartnersCreateView, TrustedPartnersDeleteView, TrustedPartnersListView, TrustedPartnersUpdateView
+from admin_panel.views.services import ServicesCreateView, ServicesDeleteView, ServicesListView, ServicesUpdateView
 
 
 
@@ -15,6 +18,23 @@ urlpatterns = [
 
     path("banners/", BannerView.as_view(), name="admin-banner-page"),
 
+    path("testimonials/", TestimonialListView.as_view(), name="admin-testimonials-page"),
+    path("testimonials/create/", TestimonialCreateView.as_view(), name="admin-testimonials-create-page"),
+    path("testimonials/update/<str:pk>", TestimonialUpdateView.as_view(), name="admin-testimonials-update-page"),
+    path("testimonials/delete/<str:pk>", TestimonialDeleteView.as_view(), name="admin-testimonials-delete-page"),
+    
+    path("partners/", TrustedPartnersListView.as_view(), name="admin-partners-page"),
+    path("partners/create/", TrustedPartnersCreateView.as_view(), name="admin-partners-create-page"),
+    path("partners/update/<str:pk>", TrustedPartnersUpdateView.as_view(), name="admin-partners-update-page"),
+    path("partners/delete/<str:pk>", TrustedPartnersDeleteView.as_view(), name="admin-partners-delete-page"),
+    
+    path("services/", ServicesListView.as_view(), name="admin-services-page"),
+    path("services/create/", ServicesCreateView.as_view(), name="admin-services-create-page"),
+    path("services/update/<str:pk>", ServicesUpdateView.as_view(), name="admin-services-update-page"),
+    path("services/delete/<str:pk>", ServicesDeleteView.as_view(), name="admin-services-delete-page"),
+    
+
+    # 
 
 
 ]
