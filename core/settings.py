@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # THIRD PARTY APPS
     "crispy_forms",
     "crispy_bootstrap5",
+    'tinymce',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

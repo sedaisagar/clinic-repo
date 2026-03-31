@@ -5,6 +5,8 @@ from admin_panel.views.common_views import AdminHomeView,AdminLoginView,AdminLog
 from admin_panel.views.testimonials import TestimonialCreateView, TestimonialDeleteView, TestimonialListView, TestimonialUpdateView
 from admin_panel.views.trusted_partners import TrustedPartnersCreateView, TrustedPartnersDeleteView, TrustedPartnersListView, TrustedPartnersUpdateView
 from admin_panel.views.services import ServicesCreateView, ServicesDeleteView, ServicesListView, ServicesUpdateView
+from admin_panel.views.departments import DepartmentsCreateView, DepartmentsDeleteView, DepartmentsListView, DepartmentsUpdateView
+from admin_panel.views.doctors import DoctorsCreateView, DoctorsDeleteView, DoctorsListView, DoctorsUpdateView
 
 
 
@@ -32,6 +34,16 @@ urlpatterns = [
     path("services/create/", ServicesCreateView.as_view(), name="admin-services-create-page"),
     path("services/update/<str:pk>", ServicesUpdateView.as_view(), name="admin-services-update-page"),
     path("services/delete/<str:pk>", ServicesDeleteView.as_view(), name="admin-services-delete-page"),
+    
+    path("departments/", DepartmentsListView.as_view(), name="admin-departments-page"),
+    path("departments/create/", DepartmentsCreateView.as_view(), name="admin-departments-create-page"),
+    path("departments/update/<str:pk>", DepartmentsUpdateView.as_view(), name="admin-departments-update-page"),
+    path("departments/delete/<str:pk>", DepartmentsDeleteView.as_view(), name="admin-departments-delete-page"),
+    
+    path("doctors/", DoctorsListView.as_view(), name="admin-doctors-page"),
+    path("doctors/create/", DoctorsCreateView.as_view(), name="admin-doctors-create-page"),
+    path("doctors/update/<str:pk>", DoctorsUpdateView.as_view(), name="admin-doctors-update-page"),
+    path("doctors/delete/<str:pk>", DoctorsDeleteView.as_view(), name="admin-doctors-delete-page"),
     
 
     # 

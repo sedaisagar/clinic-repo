@@ -51,3 +51,75 @@ class TrustedPartners(CommonModel):
         db_table = "trusted_partners"
     
 
+
+class Departments(CommonModel):
+    image = models.ImageField(upload_to="departments/images")
+    name =  models.CharField(max_length=50)
+    short_info = models.CharField(max_length=150)
+    description = models.TextField()
+
+    extra_info = models.JSONField(default=dict)
+
+    """
+    {
+        "schedules": [
+            {
+                "days": "Mon - Fri",
+                "hours" : "9:00 - 17:00",
+            }
+        ], 
+        "features" : [
+            "International Drug Database",
+            "Stretchers and Stretcher Accessories"
+        ],
+        "helpline_number":"+23-4565-65768",
+    }
+    """
+
+    class Meta:
+        db_table = "departments"
+    
+class Doctors(CommonModel):
+    image = models.ImageField(upload_to="doctors/images")
+    name =  models.CharField(max_length=50)
+    
+    department = models.ForeignKey(Departments, on_delete=models.CASCADE, related_name="doctors")
+
+    doctors_intro = models.TextField()
+
+    facebook_link = models.URLField(max_length=1000)
+    twitter_link = models.URLField(max_length=1000)
+    skype_link = models.URLField(max_length=1000)
+    linkedin_link = models.URLField(max_length=1000)
+    pinterest_link = models.URLField(max_length=1000)
+
+    class Meta:
+        db_table = "doctors"
+    
+class BlogCategories(CommonModel):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = "blog_categories"
+            
+class BlogTags(CommonModel):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = "blog_tags"
+        
+class Blogs(CommonModel):
+    image = models.ImageField(upload_to="doctors/images")
+    title =  models.CharField(max_length=255)
+    short_description =  models.CharField(max_length=500)
+    
+    blog = models.ForeignKey(BlogCategories, on_delete=models.CASCADE, related_name="blogs")
+    tags = models.ManyToManyField(BlogTags, blank=True, related_name="blogs")
+
+    description = models.TextField()
+
+
+    class Meta:
+        db_table = "blogs"
+    
+

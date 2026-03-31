@@ -8,6 +8,17 @@
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form|crispy}}
+
+        {% for i in formsets %}
+        <h1>{{i.title}}</h1>
+        {% for j in i.formset %}
+        <div class="card p-3 mb-2">
+            {{j|crispy}}
+        </div>
+        {% endfor %}
+        <input type="hidden" name="{{i.prefix}}-TOTAL_FORMS" value="{{i.formset|length}}">
+        <input type="hidden" name="{{i.prefix}}-INITIAL_FORMS" value="1">
+        {% endfor %}
         <button class="btn btn-success">Submit</button>
     </form>
 
