@@ -1,6 +1,7 @@
 from django import forms
-
+from django.forms import formset_factory
 from mainapp.models import Departments
+from tinymce.widgets import TinyMCE
 
 class FeaturesForm(forms.Form):
     feature = forms.CharField()
@@ -10,7 +11,6 @@ class SchedulesForm(forms.Form):
     hours = forms.CharField()
 
 
-from django.forms import formset_factory
 
 FeaturesForms = formset_factory(FeaturesForm, min_num=1, extra=1, max_num=10)
 SchedulesForms = formset_factory(SchedulesForm, min_num=1, extra=1, max_num=10)
@@ -21,6 +21,7 @@ class DepartmentForm(forms.ModelForm):
     class Meta:
         model = Departments
         exclude = ["extra_info"]
+        widgets = {'description': TinyMCE(attrs={'cols': 80, 'rows': 30})}
 
     def clean(self):
         cleaned_data = super().clean()

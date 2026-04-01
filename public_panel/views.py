@@ -1,5 +1,7 @@
 from django.views import generic
 
+from mainapp.models import Departments
+
 
 class PublicHomeView(generic.TemplateView):
     template_name = "public/index.html"
@@ -10,11 +12,15 @@ class PublicAboutView(generic.TemplateView):
 class PublicServicesView(generic.TemplateView):
     template_name = "public/service.html"
 
-class PublicDepartmentsView(generic.TemplateView):
+class PublicDepartmentsView(generic.ListView):
     template_name = "public/department.html"
+    queryset = Departments.objects.all()
 
-class PublicDepartmentDetailView(generic.TemplateView):
+
+class PublicDepartmentDetailView(generic.DetailView):
     template_name = "public/department-single.html"
+    queryset = Departments.objects.all()
+
 
 class PublicDoctorsView(generic.TemplateView):
     template_name = "public/doctor.html"

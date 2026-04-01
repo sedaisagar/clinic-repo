@@ -36,78 +36,21 @@
 		</div>
 
 		<div class="row">
+			{% for i in object_list %}
 			<div class="col-lg-4 col-md-6 ">
 				<div class="department-block mb-5">
-					<img src="/static/public/images/service/service-1.jpg" alt="" class="img-fluid w-100">
+					<img src="{{i.image.url}}" alt="" class="img-fluid w-100">
 					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Opthomology</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-						<a href="{% url 'department-detail-page' 1 %}" class="read-more">Learn More <i
+						<h4 class="mt-4 mb-2 title-color">{{i.name}}</h4>
+						<p class="mb-4">{{i.short_info}}</p>
+						<a href="{% url 'department-detail-page' i.id %}" class="read-more">Learn More <i
 								class="icofont-simple-right ml-2"></i></a>
 					</div>
 				</div>
 			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="department-block mb-5">
-					<img src="/static/public/images/service/service-2.jpg" alt="" class="img-fluid w-100">
-					<div class="content">
-						<h4 class="mt-4 mb-2  title-color">Cardiology</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-						<a href="department-single.html" class="read-more">Learn More <i
-								class="icofont-simple-right ml-2"></i></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="department-block mb-5">
-					<img src="/static/public/images/service/service-3.jpg" alt="" class="img-fluid w-100">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Dental Care</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-						<a href="department-single.html" class="read-more">Learn More <i
-								class="icofont-simple-right ml-2"></i></a>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 
 
-			<div class="col-lg-4 col-md-6 ">
-				<div class="department-block  mb-5 mb-lg-0">
-					<img src="/static/public/images/service/service-4.jpg" alt="" class="img-fluid w-100">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Child Care</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-						<a href="department-single.html" class="read-more">Learn More <i
-								class="icofont-simple-right ml-2"></i></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="department-block mb-5 mb-lg-0">
-					<img src="/static/public/images/service/service-6.jpg" alt="" class="img-fluid w-100">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Pulmology</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-						<a href="department-single.html" class="read-more">Learn More <i
-								class="icofont-simple-right ml-2"></i></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="department-block mb-5 mb-lg-0">
-					<img src="/static/public/images/service/service-8.jpg" alt="" class="img-fluid w-100">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Gynecology</h4>
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-						<a href="department-single.html" class="read-more">Learn More <i
-								class="icofont-simple-right ml-2"></i></a>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>

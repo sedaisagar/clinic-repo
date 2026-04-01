@@ -79,6 +79,9 @@ class Departments(CommonModel):
     class Meta:
         db_table = "departments"
     
+    def __str__(self):
+        return self.name
+        
 class Doctors(CommonModel):
     image = models.ImageField(upload_to="doctors/images")
     name =  models.CharField(max_length=50)

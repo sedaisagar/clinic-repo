@@ -3,6 +3,7 @@ from django.views import generic
 from mainapp.models import Doctors
 from django.urls import reverse_lazy
 from django.contrib import messages
+from tinymce.widgets import TinyMCE
 
 class DoctorsListView(generic.ListView):
     template_name = "admin-panel/common/list.html"
@@ -30,6 +31,11 @@ class DoctorsCreateView(generic.CreateView):
         messages.success(self.request, "Doctor Created Successfully!")
         return super().get_success_url()
 
+    def get_form(self):
+        form =  super().get_form()
+        form.fields['doctors_intro'].widget = TinyMCE(attrs={'cols': 80, 'rows': 30})
+        return form
+
 class DoctorsUpdateView(generic.UpdateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Doctors.objects.all()
@@ -44,6 +50,11 @@ class DoctorsUpdateView(generic.UpdateView):
     def get_success_url(self):
         messages.success(self.request, "Doctor Updated Successfully!")
         return super().get_success_url()
+
+    def get_form(self):
+        form =  super().get_form()
+        form.fields['doctors_intro'].widget = TinyMCE(attrs={'cols': 80, 'rows': 30})
+        return form
 
 class DoctorsDeleteView(generic.DeleteView):
     template_name = "admin-panel/common/forms.html"

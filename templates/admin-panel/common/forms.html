@@ -2,6 +2,8 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
+{% load static %}
+{{ form.media }}
 <div>
     <h1>{{title}}</h1>
 
@@ -12,7 +14,13 @@
         {% for i in formsets %}
         <h1>{{i.title}}</h1>
         {% for j in i.formset %}
-        <div class="card p-3 mb-2">
+        <div class="card p-3 mb-2" id="{{j.prefix}}-{{forloop.counter}}">
+            <div class="d-flex justify-content-between align-items-center">
+                <strong>{{i.title}} #{{forloop.counter}}</strong>
+                <button class="btn btn-danger" type="button"
+                    onclick="removeItem('{{j.prefix}}-{{forloop.counter}}', '{{i.prefix}}')">Remove</button>
+            </div>
+            <hr />
             {{j|crispy}}
         </div>
         {% endfor %}
@@ -23,5 +31,16 @@
     </form>
 
 </div>
+
+<script>
+    const removeItem = ( target, prefix ) => {
+        document.getElementById( target ).remove();
+        const tt = document.getElementsByName( `${prefix}-TOTAL_FORMS` )
+        if ( tt.length > 0 ) {
+            const ttt = tt[0];
+            tt[0].setAttribute( "value", +tt[0].getAttribute( "value" ) - 1 )
+        }
+    }
+</script>
 
 {% endblock %}
