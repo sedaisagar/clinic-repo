@@ -104,6 +104,9 @@ class BlogCategories(CommonModel):
 
     class Meta:
         db_table = "blog_categories"
+
+    def __str__(self):
+        return self.name
             
 class BlogTags(CommonModel):
     name = models.CharField(max_length=50)
@@ -111,13 +114,17 @@ class BlogTags(CommonModel):
     class Meta:
         db_table = "blog_tags"
         
+    def __str__(self):
+        return self.name
+
 class Blogs(CommonModel):
+    category = models.ForeignKey(BlogCategories, on_delete=models.CASCADE, related_name="blogs")
+    tags = models.ManyToManyField(BlogTags, blank=True, related_name="blogs")
+
     image = models.ImageField(upload_to="doctors/images")
     title =  models.CharField(max_length=255)
     short_description =  models.CharField(max_length=500)
     
-    blog = models.ForeignKey(BlogCategories, on_delete=models.CASCADE, related_name="blogs")
-    tags = models.ManyToManyField(BlogTags, blank=True, related_name="blogs")
 
     description = models.TextField()
 

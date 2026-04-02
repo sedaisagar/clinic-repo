@@ -1,11 +1,12 @@
 from django.views import generic
 
+from admin_panel.permissions import AdminLoginRequiredMixin
 from mainapp.models import Doctors
 from django.urls import reverse_lazy
 from django.contrib import messages
 from tinymce.widgets import TinyMCE
 
-class DoctorsListView(generic.ListView):
+class DoctorsListView(AdminLoginRequiredMixin,generic.ListView):
     template_name = "admin-panel/common/list.html"
     queryset = Doctors.objects.all()
 
@@ -16,7 +17,7 @@ class DoctorsListView(generic.ListView):
         return data
 
 
-class DoctorsCreateView(generic.CreateView):
+class DoctorsCreateView(AdminLoginRequiredMixin,generic.CreateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Doctors.objects.all()
     fields = "__all__"
@@ -36,7 +37,7 @@ class DoctorsCreateView(generic.CreateView):
         form.fields['doctors_intro'].widget = TinyMCE(attrs={'cols': 80, 'rows': 30})
         return form
 
-class DoctorsUpdateView(generic.UpdateView):
+class DoctorsUpdateView(AdminLoginRequiredMixin,generic.UpdateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Doctors.objects.all()
     fields = "__all__"
@@ -56,7 +57,7 @@ class DoctorsUpdateView(generic.UpdateView):
         form.fields['doctors_intro'].widget = TinyMCE(attrs={'cols': 80, 'rows': 30})
         return form
 
-class DoctorsDeleteView(generic.DeleteView):
+class DoctorsDeleteView(AdminLoginRequiredMixin,generic.DeleteView):
     template_name = "admin-panel/common/forms.html"
     queryset = Doctors.objects.all()
     fields = "__all__"

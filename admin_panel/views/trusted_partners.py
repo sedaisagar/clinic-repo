@@ -1,10 +1,11 @@
 from django.views import generic
 
+from admin_panel.permissions import AdminLoginRequiredMixin
 from mainapp.models import TrustedPartners
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-class TrustedPartnersListView(generic.ListView):
+class TrustedPartnersListView(AdminLoginRequiredMixin,generic.ListView):
     template_name = "admin-panel/common/list.html"
     queryset = TrustedPartners.objects.all()
 
@@ -15,7 +16,7 @@ class TrustedPartnersListView(generic.ListView):
         return data
 
 
-class TrustedPartnersCreateView(generic.CreateView):
+class TrustedPartnersCreateView(AdminLoginRequiredMixin,generic.CreateView):
     template_name = "admin-panel/common/forms.html"
     queryset = TrustedPartners.objects.all()
     fields = "__all__"
@@ -30,7 +31,7 @@ class TrustedPartnersCreateView(generic.CreateView):
         messages.success(self.request, "Partner Created Successfully!")
         return super().get_success_url()
 
-class TrustedPartnersUpdateView(generic.UpdateView):
+class TrustedPartnersUpdateView(AdminLoginRequiredMixin,generic.UpdateView):
     template_name = "admin-panel/common/forms.html"
     queryset = TrustedPartners.objects.all()
     fields = "__all__"
@@ -45,7 +46,7 @@ class TrustedPartnersUpdateView(generic.UpdateView):
         messages.success(self.request, "Partner Updated Successfully!")
         return super().get_success_url()
 
-class TrustedPartnersDeleteView(generic.DeleteView):
+class TrustedPartnersDeleteView(AdminLoginRequiredMixin,generic.DeleteView):
     template_name = "admin-panel/common/forms.html"
     queryset = TrustedPartners.objects.all()
     fields = "__all__"

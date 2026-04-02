@@ -1,3 +1,4 @@
+{% load custom_filters %}
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -141,7 +142,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item {% if request.resolver_match.url_name == 'admin-index-page' %}active{% endif %}">
               <a href="{% url 'admin-index-page' %}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -195,23 +196,23 @@
               <span class="menu-header-text">Pages</span>
             </li>
             
-            <li class="menu-item">
+            <li class="menu-item {{request|nav_filter:'home'}}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home"></i>
                 <div data-i18n="Home Page">Home Page</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-banner-page' %}active{% endif %}">
                   <a href="{% url 'admin-banner-page' %}" class="menu-link">
                     <div data-i18n="Banner">Banner</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-testimonials-page' %}active{% endif %}">
                   <a href="{% url 'admin-testimonials-page' %}" class="menu-link">
                     <div data-i18n="Testimonials">Testimonials</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-partners-page' %}active{% endif %}">
                   <a href="{% url 'admin-partners-page' %}" class="menu-link">
                     <div data-i18n="Tps">Trusted Partners</div>
                   </a>
@@ -223,13 +224,13 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            <li class="menu-item {{request|nav_filter:'services'}}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Services">Services</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-services-page' %}active{% endif %}">
                   <a href="{% url 'admin-services-page' %}" class="menu-link">
                     <div data-i18n="Error">All Services</div>
                   </a>
@@ -241,20 +242,48 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            <li class="menu-item {{request|nav_filter:'departments'}}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Depts">Departments</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-departments-page' %}active{% endif %}">
                   <a href="{% url 'admin-departments-page' %}" class="menu-link">
                     <div data-i18n="Depts">All Departments</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-doctors-page' %}active{% endif %}">
                   <a href="{% url 'admin-doctors-page' %}" class="menu-link">
                     <div data-i18n="Depts">All Doctors</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Content">Content</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item {{request|nav_filter:'blogs'}}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Depts">Blogs</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-blog-cat-page' %}active{% endif %}">
+                  <a href="{% url 'admin-blog-cat-page' %}" class="menu-link">
+                    <div data-i18n="Depts">Categories</div>
+                  </a>
+                </li>
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-blog-tag-page' %}active{% endif %}">
+                  <a href="{% url 'admin-blog-tag-page' %}" class="menu-link">
+                    <div data-i18n="Depts">Tags</div>
+                  </a>
+                </li>
+                <li class="menu-item {% if request.resolver_match.url_name == 'admin-blog-page' %}active{% endif %}">
+                  <a href="{% url 'admin-blog-page' %}" class="menu-link">
+                    <div data-i18n="Depts">Blogs</div>
                   </a>
                 </li>
                 <li class="menu-item">

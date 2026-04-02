@@ -7,7 +7,11 @@ from admin_panel.views.trusted_partners import TrustedPartnersCreateView, Truste
 from admin_panel.views.services import ServicesCreateView, ServicesDeleteView, ServicesListView, ServicesUpdateView
 from admin_panel.views.departments import DepartmentsCreateView, DepartmentsDeleteView, DepartmentsListView, DepartmentsUpdateView
 from admin_panel.views.doctors import DoctorsCreateView, DoctorsDeleteView, DoctorsListView, DoctorsUpdateView
-
+from admin_panel.views.blogs import ( 
+    BlogCategoriesCreateView, BlogCategoriesDeleteView, BlogCategoriesListView, BlogCategoriesUpdateView,
+    BlogTagsCreateView, BlogTagsDeleteView, BlogTagsListView, BlogTagsUpdateView,
+    BlogsCreateView, BlogsDeleteView, BlogsListView, BlogsUpdateView,
+)
 
 
 urlpatterns = [
@@ -44,6 +48,22 @@ urlpatterns = [
     path("doctors/create/", DoctorsCreateView.as_view(), name="admin-doctors-create-page"),
     path("doctors/update/<str:pk>", DoctorsUpdateView.as_view(), name="admin-doctors-update-page"),
     path("doctors/delete/<str:pk>", DoctorsDeleteView.as_view(), name="admin-doctors-delete-page"),
+    
+    path("blog-categories/", BlogCategoriesListView.as_view(), name="admin-blog-cat-page"),
+    path("blog-categories/create/", BlogCategoriesCreateView.as_view(), name="admin-blog-cat-create-page"),
+    path("blog-categories/update/<str:pk>", BlogCategoriesUpdateView.as_view(), name="admin-blog-cat-update-page"),
+    path("blog-categories/delete/<str:pk>", BlogCategoriesDeleteView.as_view(), name="admin-blog-cat-delete-page"),
+    
+    path("blog-tags/", BlogTagsListView.as_view(), name="admin-blog-tag-page"),
+    path("blog-tags/create/", BlogTagsCreateView.as_view(), name="admin-blog-tag-create-page"),
+    path("blog-tags/update/<str:pk>", BlogTagsUpdateView.as_view(), name="admin-blog-tag-update-page"),
+    path("blog-tags/delete/<str:pk>", BlogTagsDeleteView.as_view(), name="admin-blog-tag-delete-page"),
+    
+    
+    path("blogs/", BlogsListView.as_view(), name="admin-blog-page"),
+    path("blogs/create/", BlogsCreateView.as_view(), name="admin-blog-create-page"),
+    path("blogs/update/<str:pk>", BlogsUpdateView.as_view(), name="admin-blog-update-page"),
+    path("blogs/delete/<str:pk>", BlogsDeleteView.as_view(), name="admin-blog-delete-page"),
     
 
     # 

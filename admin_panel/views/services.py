@@ -1,10 +1,11 @@
 from django.views import generic
 
+from admin_panel.permissions import AdminLoginRequiredMixin
 from mainapp.models import Services
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-class ServicesListView(generic.ListView):
+class ServicesListView(AdminLoginRequiredMixin,generic.ListView):
     template_name = "admin-panel/common/list.html"
     queryset = Services.objects.all()
 
@@ -15,7 +16,7 @@ class ServicesListView(generic.ListView):
         return data
 
 
-class ServicesCreateView(generic.CreateView):
+class ServicesCreateView(AdminLoginRequiredMixin,generic.CreateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Services.objects.all()
     fields = "__all__"
@@ -30,7 +31,7 @@ class ServicesCreateView(generic.CreateView):
         messages.success(self.request, "Service Created Successfully!")
         return super().get_success_url()
 
-class ServicesUpdateView(generic.UpdateView):
+class ServicesUpdateView(AdminLoginRequiredMixin,generic.UpdateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Services.objects.all()
     fields = "__all__"
@@ -45,7 +46,7 @@ class ServicesUpdateView(generic.UpdateView):
         messages.success(self.request, "Service Updated Successfully!")
         return super().get_success_url()
 
-class ServicesDeleteView(generic.DeleteView):
+class ServicesDeleteView(AdminLoginRequiredMixin,generic.DeleteView):
     template_name = "admin-panel/common/forms.html"
     queryset = Services.objects.all()
     fields = "__all__"

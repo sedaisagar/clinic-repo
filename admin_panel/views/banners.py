@@ -2,11 +2,12 @@ from django.shortcuts import redirect
 from django.views import generic
 
 from admin_panel.forms.banner import BannerForm
+from admin_panel.permissions import AdminLoginRequiredMixin
 from mainapp.models import Banner
 
 from django.contrib import messages
 
-class BannerView(generic.TemplateView):
+class BannerView(AdminLoginRequiredMixin,generic.TemplateView):
     template_name = "admin-panel/common/forms.html"
 
     def get_object(self):

@@ -1,11 +1,12 @@
 from django.views import generic
 
 from admin_panel.forms.departments import DepartmentForm, FeaturesForms, SchedulesForms
+from admin_panel.permissions import AdminLoginRequiredMixin
 from mainapp.models import Departments
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-class DepartmentsListView(generic.ListView):
+class DepartmentsListView(AdminLoginRequiredMixin,generic.ListView):
     template_name = "admin-panel/common/list.html"
     queryset = Departments.objects.all()
 
@@ -16,7 +17,7 @@ class DepartmentsListView(generic.ListView):
         return data
 
 
-class DepartmentsCreateView(generic.CreateView):
+class DepartmentsCreateView(AdminLoginRequiredMixin,generic.CreateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Departments.objects.all()
     # fields = "__all__"
@@ -41,7 +42,7 @@ class DepartmentsCreateView(generic.CreateView):
         messages.success(self.request, "Department Created Successfully!")
         return super().get_success_url()
 
-class DepartmentsUpdateView(generic.UpdateView):
+class DepartmentsUpdateView(AdminLoginRequiredMixin,generic.UpdateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Departments.objects.all()
     # fields = "__all__"
@@ -69,7 +70,7 @@ class DepartmentsUpdateView(generic.UpdateView):
         messages.success(self.request, "Department Updated Successfully!")
         return super().get_success_url()
 
-class DepartmentsDeleteView(generic.DeleteView):
+class DepartmentsDeleteView(AdminLoginRequiredMixin,generic.DeleteView):
     template_name = "admin-panel/common/forms.html"
     queryset = Departments.objects.all()
     fields = "__all__"

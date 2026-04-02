@@ -1,10 +1,11 @@
 from django.views import generic
 
+from admin_panel.permissions import AdminLoginRequiredMixin
 from mainapp.models import Testimonials
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-class TestimonialListView(generic.ListView):
+class TestimonialListView(AdminLoginRequiredMixin,generic.ListView):
     template_name = "admin-panel/common/list.html"
     queryset = Testimonials.objects.all()
 
@@ -15,7 +16,7 @@ class TestimonialListView(generic.ListView):
         return data
 
 
-class TestimonialCreateView(generic.CreateView):
+class TestimonialCreateView(AdminLoginRequiredMixin,generic.CreateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Testimonials.objects.all()
     fields = "__all__"
@@ -30,7 +31,7 @@ class TestimonialCreateView(generic.CreateView):
         messages.success(self.request, "Testimonial Created Successfully!")
         return super().get_success_url()
 
-class TestimonialUpdateView(generic.UpdateView):
+class TestimonialUpdateView(AdminLoginRequiredMixin,generic.UpdateView):
     template_name = "admin-panel/common/forms.html"
     queryset = Testimonials.objects.all()
     fields = "__all__"
@@ -45,7 +46,7 @@ class TestimonialUpdateView(generic.UpdateView):
         messages.success(self.request, "Testimonial Updated Successfully!")
         return super().get_success_url()
 
-class TestimonialDeleteView(generic.DeleteView):
+class TestimonialDeleteView(AdminLoginRequiredMixin,generic.DeleteView):
     template_name = "admin-panel/common/forms.html"
     queryset = Testimonials.objects.all()
     fields = "__all__"
