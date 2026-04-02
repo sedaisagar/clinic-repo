@@ -28,7 +28,7 @@ class Services(CommonModel):
 class Testimonials(CommonModel):
     image = models.ImageField(upload_to="services/images")
     name =  models.CharField(max_length=50)
-    position =  models.CharField(max_length=50)
+    review_title =  models.CharField(max_length=50)
     review = models.CharField(max_length=250)
 
     class Meta:

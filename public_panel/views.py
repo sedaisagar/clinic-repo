@@ -1,11 +1,21 @@
 from django.views import generic
 
-from mainapp.models import Departments
+from mainapp.models import Banner, Departments, Services, Testimonials, TrustedPartners
 
 
 class PublicHomeView(generic.TemplateView):
     template_name = "public/index.html"
 
+    def get_context_data(self, **kwargs):
+        data =  super().get_context_data(**kwargs)
+        
+        data.update(
+            banner = Banner.objects.first(),
+            services = Services.objects.all()[:6],
+            testimonials = Testimonials.objects.all(),
+            partners = TrustedPartners.objects.all()
+        )
+        return data
 class PublicAboutView(generic.TemplateView):
     template_name = "public/about.html"
 

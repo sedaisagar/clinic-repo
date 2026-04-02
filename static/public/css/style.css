@@ -8,6 +8,7 @@ Version: 1.0.0
 
 */
 @import url("https://fonts.googleapis.com/css?family=Exo:500,600,700|Roboto&display=swap");
+
 html {
   overflow-x: hidden;
 }
@@ -21,34 +22,51 @@ body {
   font-weight: 400;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
   font-family: "Exo", sans-serif;
   font-weight: 700;
   color: #222;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   font-size: 2.5rem;
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: 44px;
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-size: 1.5rem;
 }
 
-h4, .h4 {
+h4,
+.h4 {
   font-size: 1.3rem;
   line-height: 30px;
 }
 
-h5, .h5 {
+h5,
+.h5 {
   font-size: 1.25rem;
 }
 
-h6, .h6 {
+h6,
+.h6 {
   font-size: 1rem;
 }
 
@@ -60,14 +78,20 @@ p {
   background: #223a66;
 }
 
-input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
   box-shadow: none;
   height: 45px;
   outline: none;
   font-size: 14px;
 }
 
-input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus, input[type="tel"]:focus {
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus {
   box-shadow: none;
   border: 1px solid #223a66;
 }
@@ -195,7 +219,9 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   border-radius: 50px;
 }
 
-.btn.active:focus, .btn:active:focus, .btn:focus {
+.btn.active:focus,
+.btn:active:focus,
+.btn:focus {
   outline: 0;
 }
 
@@ -294,7 +320,8 @@ a {
   transition: all .35s ease;
 }
 
-a:focus, a:hover {
+a:focus,
+a:hover {
   color: #e12454;
   text-decoration: none;
 }
@@ -327,12 +354,15 @@ a:focus {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.slick-slide:focus, .slick-slide a {
+.slick-slide:focus,
+.slick-slide a {
   outline: none;
 }
 
 @media (max-width: 480px) {
-  h2, .h2 {
+
+  h2,
+  .h2 {
     font-size: 1.3rem;
     line-height: 36px;
   }
@@ -465,7 +495,7 @@ a:focus {
   position: relative;
   overflow: hidden;
   background: #fff;
-  background: url("../images/bg/slider-bg-1.jpg") no-repeat;
+  /* background: url("../images/bg/slider-bg-1.jpg") no-repeat; */
   background-size: cover;
   min-height: 550px;
 }
@@ -505,6 +535,7 @@ a:focus {
     font-size: 38px;
     line-height: 50px;
   }
+
   .banner {
     min-height: 450px;
     background: #fff !important;
@@ -516,6 +547,7 @@ a:focus {
     font-size: 28px;
     line-height: 40px;
   }
+
   .banner {
     min-height: 450px;
     background: #fff !important;
@@ -527,6 +559,7 @@ a:focus {
     font-size: 56px;
     line-height: 70px;
   }
+
   .banner {
     background: #fff !important;
   }
@@ -750,7 +783,9 @@ a:focus {
   color: #fff;
 }
 
-.doctors .btn-group > .btn-group:not(:last-child) > .btn, .doctors .btn-group > .btn:not(:last-child):not(.dropdown-toggle), .doctors .btn-group > .btn:not(:first-child) {
+.doctors .btn-group>.btn-group:not(:last-child)>.btn,
+.doctors .btn-group>.btn:not(:last-child):not(.dropdown-toggle),
+.doctors .btn-group>.btn:not(:first-child) {
   border-radius: 3px;
 }
 
@@ -795,6 +830,7 @@ a:focus {
   .doctors .btn-group {
     display: block;
   }
+
   .doctors .btn-group .btn {
     margin: 8px 3px;
   }
@@ -804,6 +840,7 @@ a:focus {
   .doctors .btn-group {
     display: block;
   }
+
   .doctors .btn-group .btn {
     margin: 8px 3px;
   }
@@ -813,6 +850,7 @@ a:focus {
   .doctors .btn-group {
     display: block;
   }
+
   .doctors .btn-group .btn {
     margin: 8px 3px;
   }
@@ -945,6 +983,7 @@ a:focus {
   .testimonial-wrap {
     margin-left: 0px;
   }
+
   .testimonial::before {
     display: none;
   }
@@ -954,6 +993,7 @@ a:focus {
   .testimonial-wrap {
     margin-left: 0px;
   }
+
   .testimonial::before {
     display: none;
   }
@@ -963,6 +1003,7 @@ a:focus {
   .testimonial-wrap {
     margin-left: 0px;
   }
+
   .testimonial::before {
     display: none;
   }
@@ -972,6 +1013,7 @@ a:focus {
   .testimonial-wrap {
     margin-left: 0px;
   }
+
   .testimonial::before {
     display: none;
   }
@@ -1140,7 +1182,7 @@ a:focus {
   margin-top: 20px;
 }
 
-.post-comments .media > .pull-left {
+.post-comments .media>.pull-left {
   padding-right: 20px;
 }
 
@@ -1213,7 +1255,7 @@ a:focus {
   margin-right: 20px;
 }
 
-.post-author > img {
+.post-author>img {
   border: 1px solid #dedede;
   max-width: 120px;
   padding: 5px;
@@ -1263,18 +1305,21 @@ a:focus {
   margin-top: 80px;
 }
 
-.comment-reply-form input, .comment-reply-form textarea {
+.comment-reply-form input,
+.comment-reply-form textarea {
   height: 35px;
   border-radius: 0;
   box-shadow: none;
 }
 
-.comment-reply-form input:focus, .comment-reply-form textarea:focus {
+.comment-reply-form input:focus,
+.comment-reply-form textarea:focus {
   box-shadow: none;
   border: 1px solid #223a66;
 }
 
-.comment-reply-form textarea, .comment-reply-form .btn-main {
+.comment-reply-form textarea,
+.comment-reply-form .btn-main {
   height: auto;
 }
 
