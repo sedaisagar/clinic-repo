@@ -14,6 +14,8 @@ class DoctorsListView(AdminLoginRequiredMixin,generic.ListView):
         data =  super().get_context_data(**kwargs)
         data["fields"] = ["name"]
         data["title"] = "Doctors"
+        data["actions"] = ["create", "edit", "delete"]
+
         return data
 
 

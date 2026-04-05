@@ -14,6 +14,7 @@ class BlogCategoriesListView(AdminLoginRequiredMixin,generic.ListView):
         data =  super().get_context_data(**kwargs)
         data["fields"] = ["name"]
         data["title"] = "Blog Categories"
+        data["actions"] = ["create", "edit", "delete"]
         return data
 
 
@@ -76,6 +77,7 @@ class BlogTagsListView(AdminLoginRequiredMixin,generic.ListView):
         data =  super().get_context_data(**kwargs)
         data["fields"] = ["name"]
         data["title"] = "Blog Tags"
+        data["actions"] = ["create", "edit", "delete"]
         return data
 
 
@@ -142,6 +144,7 @@ class BlogsListView(AdminLoginRequiredMixin,generic.ListView):
         data =  super().get_context_data(**kwargs)
         data["fields"] = ["title"]
         data["title"] = "Blogs"
+        data["actions"] = ["create", "edit", "delete"]
         return data
 
 

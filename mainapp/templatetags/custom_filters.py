@@ -29,7 +29,8 @@ def nav_filter(request, group_name):
         ],
         "departments":[
             'admin-departments-page',
-            'admin-doctors-page'
+            'admin-doctors-page',
+            'admin-appointments-page',
         ],
         "blogs": [
             'admin-blog-cat-page',

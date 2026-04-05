@@ -13,6 +13,7 @@ class TestimonialListView(AdminLoginRequiredMixin,generic.ListView):
         data =  super().get_context_data(**kwargs)
         data["fields"] = ["name", "position"]
         data["title"] = "Testimonials"
+        data["actions"] = ["create", "edit", "delete"]
         return data
 
 

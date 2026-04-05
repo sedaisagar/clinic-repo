@@ -99,6 +99,9 @@ class Doctors(CommonModel):
     class Meta:
         db_table = "doctors"
     
+    def __str__(self):
+        return self.name
+
 class BlogCategories(CommonModel):
     name = models.CharField(max_length=50)
 
@@ -133,3 +136,37 @@ class Blogs(CommonModel):
         db_table = "blogs"
     
 
+
+
+# Appointments
+
+class Appointments(CommonModel):
+    department = models.ForeignKey(Departments, on_delete=models.CASCADE, related_name="appointments")
+    doctor = models.ForeignKey(Doctors, on_delete=models.CASCADE, related_name="appointments")
+
+    # Who booked appointment ? 
+    user = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="appointments", null=True, blank=True)
+
+    appointment_date = models.DateField()
+    appointment_time = models.TimeField()
+
+    full_name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=25)
+
+    message = models.TextField()
+
+
+    class Meta:
+        db_table = "appointments"
+
+        
+class Contacts(CommonModel):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+    phone = models.CharField(max_length=25)
+
+    message = models.TextField()
+
+    class Meta:
+        db_table = "public_contacts"

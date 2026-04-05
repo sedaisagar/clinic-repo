@@ -1,0 +1,9 @@
+{% extends 'admin-panel/base.html' %}
+{% block content %}
+{% load custom_filters %}
+<a href="{% url list_name %}" class="btn btn-link">Go Back</a>
+<h1>{{title}}</h1>
+{% for i in fields %}
+<p>{{i|upper}} : {{object|get_attr:i}}</p>
+{% endfor %}
+{% endblock %}

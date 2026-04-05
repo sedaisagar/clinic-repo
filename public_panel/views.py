@@ -1,6 +1,7 @@
+from django.urls import reverse_lazy
 from django.views import generic
 
-from mainapp.models import Banner, Departments, Services, Testimonials, TrustedPartners
+from mainapp.models import Appointments, Banner, BlogCategories, BlogTags, Blogs, Contacts, Departments, Doctors, Services, Testimonials, TrustedPartners
 
 
 class PublicHomeView(generic.TemplateView):
@@ -39,16 +40,59 @@ class PublicDoctorDetailView(generic.TemplateView):
     template_name = "public/doctor-single.html"
 
 
-class PublicAppointmentView(generic.TemplateView):
+class PublicAppointmentView(generic.CreateView):
     template_name = "public/appointment.html"
+    queryset = Appointments.objects.all()
+    fields = "__all__"
+
+    success_url = reverse_lazy("appointment-page")
 
 
-class PublicBlogsView(generic.TemplateView):
+    def get_context_data(self, **kwargs):
+        data =  super().get_context_data(**kwargs)
+        data["doctors"] = Doctors.objects.all()
+        data["departments"] = Departments.objects.all()
+        return data
+        
+class PublicBlogsView(generic.ListView):
     template_name = "public/blog-sidebar.html"
+    queryset = Blogs.objects.all()
+    paginate_by = 3
 
-class PublicBlogDetailView(generic.TemplateView):
+    def get_context_data(self, **kwargs):
+        data =  super().get_context_data(**kwargs)
+        data["tags"]= BlogTags.objects.all()
+        data["categories"]= BlogCategories.objects.all()
+        return data
+    
+    def get_queryset(self):
+        queryset =  super().get_queryset()
+        
+        query_params = self.request.GET # DICT VALUES
+        category = query_params.get("category")
+        tag = query_params.get("tag")
+
+        # Filter By Category
+        if category:
+            queryset = queryset.filter(category__pk=category)
+
+        # Filter By Tag
+        if tag:
+            queryset = queryset.filter(tags__pk=tag)
+        
+        return queryset
+
+
+
+class PublicBlogDetailView(generic.DetailView):
     template_name = "public/blog-single.html"
+    queryset = Blogs.objects.all()
 
 
-class PublicContactView(generic.TemplateView):
+class PublicContactView(generic.CreateView):
     template_name = "public/contact.html"
+
+    queryset = Contacts.objects.all()
+    fields = "__all__"
+
+    success_url = reverse_lazy("contact-page")

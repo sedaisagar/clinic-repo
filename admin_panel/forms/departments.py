@@ -31,6 +31,7 @@ class DepartmentForm(forms.ModelForm):
 
         schedules, features = [], []
 
+
         if ffs.is_valid() and sfs.is_valid():
             schedules = sfs.cleaned_data
             features = ffs.cleaned_data            
@@ -51,6 +52,7 @@ class DepartmentForm(forms.ModelForm):
     def save(self, commit = ...):
         instance:Departments = super().save(commit)
         
+        breakpoint()
         instance.extra_info = self.cleaned_data.get("extra_info")
         instance.save(update_fields=["extra_info"])
 

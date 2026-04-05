@@ -7,7 +7,9 @@
     <div class="card py-5">
         <div class="d-flex justify-content-between align-items-center px-3">
             <h5>{{title}}</h5>
+            {% if 'create' in actions %}
             <a class="btn btn-primary" href="create/">Create</a>
+            {% endif %}
         </div>
         <div class="table-responsive text-nowrap mb-5">
             <table class="table table-striped mb-5">
@@ -16,7 +18,9 @@
                         {% for i in fields %}
                         <th>{{i|upper}}</th>
                         {% endfor %}
+                        {% if 'edit' in actions or 'delete' in actions or 'detail' in actions %}
                         <th>Actions</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0 mb-5">
@@ -25,12 +29,22 @@
                         {% for i in fields %}
                         <td>{{j|get_attr:i}}</td>
                         {% endfor %}
+                        {% if 'edit' in actions or 'delete' in actions or 'detail' in actions %}
                         <td>
                             <div class="d-flex justify-content-between align-items-center px-3 w-50">
+                               {% if 'edit' in actions %}
                                 <a href="update/{{j.pk}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                               {% endif %}
+                               {% if 'delete' in actions %}
                                 <a href="delete/{{j.pk}}"><i class="bx bx-trash me-1"></i>Delete</a>
+                               {% endif %}
+                               {% if 'detail' in actions %}
+                                <a href="{{j.pk}}"><i class="bx bx-eye me-1"></i>View</a>
+                               {% endif %}
                             </div>
                         </td>
+                        {% endif %}
+
                     </tr>
                     {% empty %}
                     <tr> 
@@ -40,7 +54,7 @@
 
                     {% if object_list %}
                     <tr>
-                        <td colspan="3">
+                        <td colspan="6">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item"><a class="page-link" {% if page_obj.has_previous %}

@@ -13,6 +13,7 @@ class ServicesListView(AdminLoginRequiredMixin,generic.ListView):
         data =  super().get_context_data(**kwargs)
         data["fields"] = ["title"]
         data["title"] = "Services"
+        data["actions"] = ["create", "edit", "delete"]
         return data
 
 
