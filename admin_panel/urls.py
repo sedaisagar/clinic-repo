@@ -1,7 +1,7 @@
 from django.urls import path
 
 from admin_panel.views.banners import BannerView
-from admin_panel.views.common_views import AdminContactsDetailView, AdminContactsListView, AdminHomeView,AdminLoginView,AdminLogoutView
+from admin_panel.views.common_views import AdminContactsDetailView, AdminContactsListView, AdminHomeView,AdminLoginView,AdminLogoutView, AdminProfileView, SiteSettingsView
 from admin_panel.views.testimonials import TestimonialCreateView, TestimonialDeleteView, TestimonialListView, TestimonialUpdateView
 from admin_panel.views.trusted_partners import TrustedPartnersCreateView, TrustedPartnersDeleteView, TrustedPartnersListView, TrustedPartnersUpdateView
 from admin_panel.views.services import ServicesCreateView, ServicesDeleteView, ServicesListView, ServicesUpdateView
@@ -22,10 +22,12 @@ urlpatterns = [
     # AUTH VIEWS
     path("login/", AdminLoginView.as_view(), name="admin-login-page"),
     path("logout/", AdminLogoutView.as_view(), name="admin-logout-page"),
+    path("profile/", AdminProfileView.as_view(), name="admin-profile-page"),
 
     # Home Page VIEWS
 
     path("banners/", BannerView.as_view(), name="admin-banner-page"),
+    path("site-settings/", SiteSettingsView.as_view(), name="admin-ss-page"),
 
     path("testimonials/", TestimonialListView.as_view(), name="admin-testimonials-page"),
     path("testimonials/create/", TestimonialCreateView.as_view(), name="admin-testimonials-create-page"),

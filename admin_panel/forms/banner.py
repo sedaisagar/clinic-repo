@@ -1,4 +1,4 @@
-from mainapp.models import Banner
+from mainapp.models import Banner, SiteSettings
 from django import forms
 
 
@@ -10,3 +10,9 @@ class BannerForm(forms.ModelForm):
         
         # exclude = []
         # fields = []
+
+class SiteSettingsForm(forms.ModelForm):
+
+    class Meta:
+        model = SiteSettings
+        fields = "__all__"

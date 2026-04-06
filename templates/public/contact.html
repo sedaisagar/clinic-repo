@@ -29,21 +29,21 @@
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-live-support"></i>
                     <h5>Call Us</h5>
-                    +823-4565-13456
+                    {{ss.phone_number}}
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-support-faq"></i>
                     <h5>Email Us</h5>
-                    contact@mail.com
+                    {{ss.email}}
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-location-pin"></i>
                     <h5>Location</h5>
-                    North Main Street,Brooklyn Australia
+                    {{ss.address}}
                 </div>
             </div>
         </div>
@@ -120,6 +120,8 @@
 
 
 <div class="google-map ">
-    <div id="map"></div>
+    <div>
+        {{ss.map|safe}}
+    </div>
 </div>
 {% endblock %}

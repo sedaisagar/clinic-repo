@@ -170,3 +170,15 @@ class Contacts(CommonModel):
 
     class Meta:
         db_table = "public_contacts"
+
+class SiteSettings(CommonModel):
+    phone_number = models.CharField(max_length=25, default="823-4565-13456")
+    address = models.CharField(max_length=45, default="Address Ta-134/A, New York, USA ")
+    email = models.EmailField(default="support@email.com")
+    support_email = models.EmailField(default="support@email.com")
+    opening_hour = models.CharField(max_length=255, default="Mon to Fri : 08:30 - 18:00")
+    map = models.TextField()
+
+
+    class Meta:
+        db_table = "site_settings"
