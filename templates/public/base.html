@@ -103,6 +103,32 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact-page'  %}">Contact</a></li>
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownUser" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="icofont-user"></i> {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+                                <li><a class="dropdown-item" href="{% url 'dashboard-index' %}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <form action="{% url 'dashboard-logout' %}" method="post">
+                                        {% csrf_token %}
+                                        <button class="dropdown-item">Logout</button>
+                                    </form>
+
+                                </li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard-login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard-register' %}">Register</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

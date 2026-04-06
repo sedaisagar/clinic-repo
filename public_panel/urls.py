@@ -12,6 +12,10 @@ from public_panel.views import (
     PublicBlogsView,
     PublicBlogDetailView,
     PublicContactView,
+    DashboardLoginView,
+    DashboardRegisterView,
+    DashboardIndexView,
+    DashboardLogoutView,
 )
 
 urlpatterns = [
@@ -26,4 +30,10 @@ urlpatterns = [
     path("blogs/", PublicBlogsView.as_view(), name="blog-page"),
     path("blogs/<str:pk>", PublicBlogDetailView.as_view(), name="blog-detail-page"),
     path("contact/", PublicContactView.as_view(), name="contact-page"),
+    
+    # Dashboard URLs
+    path("dashboard/", DashboardIndexView.as_view(), name="dashboard-index"),
+    path("dashboard/login/", DashboardLoginView.as_view(), name="dashboard-login"),
+    path("dashboard/register/", DashboardRegisterView.as_view(), name="dashboard-register"),
+    path("dashboard/logout/", DashboardLogoutView.as_view(), name="dashboard-logout"),
 ]

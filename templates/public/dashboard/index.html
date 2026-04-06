@@ -1,0 +1,187 @@
+{% extends 'public/base.html' %}
+{% block content %}
+
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block text-center">
+                    <span class="text-white">Welcome Back</span>
+                    <h1 class="text-capitalize mb-5 text-lg">User Dashboard</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <!-- User Profile Card -->
+            <div class="col-lg-3 mb-5 mb-lg-0">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="icofont-user-alt-5 text-lg text-color"></i>
+                        </div>
+                        <h4 class="card-title mb-2">{{ user.get_full_name|default:user.username }}</h4>
+                        <p class="text-muted mb-0">Patient Account</p>
+                        <hr>
+                        <div class="text-start">
+                            <p class="mb-2"><strong>Email:</strong> {{ user.email }}</p>
+                            <p class="mb-2"><strong>Phone:</strong> +1-800-555-0000</p>
+                            <p class="mb-0"><strong>Member Since:</strong> {{ user.date_joined|date:"M d, Y" }}</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="#" class="btn btn-main btn-round-full btn-sm">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="col-lg-9">
+                <!-- Quick Stats -->
+                <div class="row mb-5">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h6 class="text-muted mb-2">Total Appointments</h6>
+                                        <h3 class="text-color mb-0">5</h3>
+                                    </div>
+                                    <div class="text-lg text-color">
+                                        <i class="icofont-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h6 class="text-muted mb-2">Completed</h6>
+                                        <h3 class="text-color mb-0">3</h3>
+                                    </div>
+                                    <div class="text-lg text-color">
+                                        <i class="icofont-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h6 class="text-muted mb-2">Upcoming</h6>
+                                        <h3 class="text-color mb-0">2</h3>
+                                    </div>
+                                    <div class="text-lg text-color">
+                                        <i class="icofont-hourglass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Appointments -->
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h4 class="card-title mb-0">Upcoming Appointments</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Doctor</th>
+                                        <th>Department</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dr. John Smith</td>
+                                        <td>Cardiology</td>
+                                        <td>Apr 15, 2026</td>
+                                        <td>2:00 PM</td>
+                                        <td><span class="badge badge-success">Confirmed</span></td>
+                                        <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Sarah Johnson</td>
+                                        <td>Neurology</td>
+                                        <td>Apr 22, 2026</td>
+                                        <td>10:30 AM</td>
+                                        <td><span class="badge badge-info">Pending</span></td>
+                                        <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'appointment-page' %}" class="btn btn-main btn-round-full">Make New
+                                Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Records Section -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h4 class="card-title mb-0">Medical Records</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Record Type</th>
+                                        <th>Doctor</th>
+                                        <th>Notes</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mar 20, 2026</td>
+                                        <td>Prescription</td>
+                                        <td>Dr. John Smith</td>
+                                        <td>Regular Checkup - BP 120/80</td>
+                                        <td><a href="#" class="btn btn-sm btn-outline-primary">Download</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feb 15, 2026</td>
+                                        <td>Lab Report</td>
+                                        <td>Dr. Mike Davis</td>
+                                        <td>Blood Test - All Normal</td>
+                                        <td><a href="#" class="btn btn-sm btn-outline-primary">Download</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
